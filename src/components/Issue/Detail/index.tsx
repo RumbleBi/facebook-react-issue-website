@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getIssueDetail, type IssueDetail } from '../../../apis/issues';
-import { Wrap } from '../styled';
+import { Wrap } from './styled';
 
 export default function Detail() {
   const { number } = useParams();
