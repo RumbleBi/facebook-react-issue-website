@@ -1,3 +1,5 @@
+import { Wrap } from './styled';
+
 export default function Header() {
-  return <div>헤더</div>;
+  return <Wrap>헤더</Wrap>;
 }
