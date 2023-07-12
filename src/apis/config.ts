@@ -5,7 +5,7 @@ const config = {
 };
 
 export const githubAPI: AxiosInstance = axios.create({
-  baseURL: 'https://www.pre-onboarding-selection-task.shop/',
+  baseURL: 'https://api.github.com',
   headers: {
     Accept: 'application/vnd.github.v3+json',
     Authorization: `Bearer ${config.githubToken}`,

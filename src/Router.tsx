@@ -7,9 +7,9 @@ export function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Navigate to="/issue" />} />
-        <Route path="/issue" element={<Issue />} />
-        <Route path="/issue/:id" element={<Detail />} />
+        <Route path="/" element={<Navigate to="/issues" />} />
+        <Route path="/issues" element={<Issue />} />
+        <Route path="/issues/:number" element={<Detail />} />
       </Routes>
     </BrowserRouter>
   );

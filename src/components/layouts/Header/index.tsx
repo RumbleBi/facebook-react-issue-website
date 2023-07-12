@@ -1,5 +1,5 @@
-import { Wrap } from './styled';
+import { Title } from './styled';
 
 export default function Header() {
-  return <Wrap>헤더</Wrap>;
+  return <Title>Facebook / React</Title>;
 }
