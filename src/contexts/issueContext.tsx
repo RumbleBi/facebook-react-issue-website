@@ -5,13 +5,16 @@ import { createContext, useContext, useEffect, useReducer } from 'react';
 import { getRepo } from '../apis/issues';
 import { IssueProviderProps } from '../types/issueTypes';
 
-const IssueContext = createContext(null);
-
 const initialState = {
   repo: '',
   issues: [],
   issue: {},
 };
+
+const IssueContext = createContext({
+  state: initialState,
+  dispatch: () => null,
+});
 
 const issueReducer = (state, action) => {
   switch (action.type) {

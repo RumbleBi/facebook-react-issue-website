@@ -1,5 +1,7 @@
+import { useIssue } from '../../../contexts/issueContext';
 import { Title } from './styled';
 
 export default function Header() {
-  return <Title>Facebook / React</Title>;
+  const { state } = useIssue();
+  return <Title>{state.repo}</Title>;
 }

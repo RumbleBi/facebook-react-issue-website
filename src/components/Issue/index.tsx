@@ -3,7 +3,7 @@ import { Fragment } from 'react';
 import useIssue from '../hooks/useIssue';
 import IssueItem from '../Issue/Item';
 import { AdWrap, Wrap } from './styled';
-import wanted_logo from '../img/wanted_logo.png';
+import wanted_logo from '../../img/wanted_logo.png';
 
 export default function Issue() {
   const { issueList, isLoading, error } = useIssue();
