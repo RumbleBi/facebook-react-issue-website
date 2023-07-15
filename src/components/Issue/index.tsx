@@ -1,35 +1,26 @@
-// components/Issue.tsx
-import { Fragment } from 'react';
-import useIssue from '../hooks/useIssue';
-import IssueItem from '../Issue/Item';
-import { AdWrap, Wrap } from './styled';
-import wanted_logo from '../../img/wanted_logo.png';
+import { Link } from 'react-router-dom';
+import { formatDateKOR } from '../../utils/formatDate';
+import { ListWrap, Title, Comment } from './styled';
+import { IssueItemProps } from '../../types/types';
 
-export default function Issue() {
-  const { issueList, isLoading, error } = useIssue();
+const IssueItem = ({ issue }: IssueItemProps) => (
+  <Link
+    to={`/issues/${issue.number}`}
+    style={{ all: 'unset' }}
+    state={{ issue: issue }}
+  >
+    <ListWrap>
+      <Title>
+        <div>
+          #{issue.number} {issue.title}
+        </div>
+        <div>
+          작성자: {issue.user.login}, 작성일: {formatDateKOR(issue.created_at)}
+        </div>
+      </Title>
+      <Comment>코멘트: {issue.comments}</Comment>
+    </ListWrap>
+  </Link>
+);
 
-  if (error) {
-    return <div>서버에 문제가 발생했습니다. 다시 시도해 주세요.</div>;
-  }
-
-  return (
-    <Wrap>
-      {issueList.map((issue, idx) => (
-        <Fragment key={issue.id}>
-          <IssueItem issue={issue} />
-          {(idx + 1) % 4 === 0 && (
-            <AdWrap
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://www.wanted.co.kr/"
-            >
-              <img src={wanted_logo} alt="wanted_logo" />
-            </AdWrap>
-          )}
-        </Fragment>
-      ))}
-      {isLoading && <div>로딩중입니다...</div>}
-      <div id="bottom-boundary" />
-    </Wrap>
-  );
-}
+export default IssueItem;

@@ -1,7 +1,6 @@
-import { IssueDetail, IssueList, Repo } from '../types/issueTypes';
 import { githubAPI } from './config';
 
-export const getIssue = async (pageNum = 1): Promise<IssueList[]> => {
+export const getIssues = async (pageNum = 1) => {
   try {
     const res = await githubAPI.get('/repos/facebook/react/issues', {
       params: {
@@ -21,22 +20,10 @@ export const getIssue = async (pageNum = 1): Promise<IssueList[]> => {
   }
 };
 
-export const getIssueDetail = async (
-  issueNum: number,
-): Promise<IssueDetail> => {
-  try {
-    const res = await githubAPI.get(`/repos/facebook/react/issues/${issueNum}`);
-    console.log(res.data);
-    return res.data;
-  } catch (e) {
-    console.log(e);
-    throw e;
-  }
-};
-
-export const getRepo = async (): Promise<Repo> => {
+export const getRepoName = async () => {
   try {
     const res = await githubAPI.get(`/repos/facebook/react`);
+    console.log(res.data);
     return res.data;
   } catch (e) {
     console.log(e);

@@ -1,16 +1,11 @@
 import { ReactNode } from 'react';
 
-export interface IssueList {
+export interface Issues {
   title: string;
   number: number;
   id: number;
   created_at: string;
   comments: number;
-  user: {
-    login: string;
-  };
-}
-export interface IssueDetail extends IssueList {
   body: string;
   user: {
     login: string;
@@ -18,13 +13,13 @@ export interface IssueDetail extends IssueList {
   };
 }
 
+export interface IssueItemProps {
+  issue: Issues;
+}
+
 export interface Repo {
   full_name: string;
 }
-
-export type IssueAction = { type: 'ADD_ISSUE'; issue: IssueDetail };
-
-export interface IssueState {}
 
 export interface IssueProviderProps {
   children: ReactNode;
