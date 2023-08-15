@@ -1,7 +1,18 @@
 import { useLocation } from 'react-router-dom';
 
-import { Wrap } from './styled';
+import {
+  Wrap,
+  UserWrap,
+  AvatarImg,
+  InfoWrap,
+  InfoTop,
+  InfoBottom,
+  IssueCommentCnt,
+  IssueContent,
+} from './styled';
 import { RouterDomState } from '../../types/types';
+import { formatDateKOR } from '../../utils/formatDate';
+import Markdown from '../../utils/markdown';
 
 export default function IssueDetailPage() {
   const { state } = useLocation() as RouterDomState;
@@ -10,10 +21,24 @@ export default function IssueDetailPage() {
   console.log(issue);
   return (
     <Wrap>
-      <div>
-        <h3>{issue.title}</h3>
-        <div>{issue.body}</div>
-      </div>
+      <UserWrap>
+        <AvatarImg src={issue.user.avatar_url} alt="avatar" />
+        <InfoWrap>
+          <div>
+            <InfoTop>
+              #{issue.number} {issue.title}
+            </InfoTop>
+            <InfoBottom>
+              작성자: {issue.user.login}, 작성일:{' '}
+              {formatDateKOR(issue.created_at)}
+            </InfoBottom>
+          </div>
+          <IssueCommentCnt>코멘트: {issue.comments}</IssueCommentCnt>
+        </InfoWrap>
+      </UserWrap>
+      <IssueContent>
+        <Markdown content={issue.body} />
+      </IssueContent>
     </Wrap>
   );
 }
