@@ -1,20 +1,19 @@
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 import { Wrap } from './styled';
+import { RouterDomState } from '../../types/types';
 
 export default function IssueDetailPage() {
-  const { state } = useLocation();
-  const { number } = useParams();
-  console.log(number);
+  const { state } = useLocation() as RouterDomState;
+  const { issue } = state;
 
+  console.log(issue);
   return (
     <Wrap>
-      {state.issue && (
-        <div>
-          <h3>{state.issue.title}</h3>
-          <div>{state.issue.body}</div>
-        </div>
-      )}
+      <div>
+        <h3>{issue.title}</h3>
+        <div>{issue.body}</div>
+      </div>
     </Wrap>
   );
 }

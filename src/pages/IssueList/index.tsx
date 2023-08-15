@@ -18,9 +18,7 @@ export default function IssueListPage() {
       {issueList.map((issue, idx) => (
         <Fragment key={issue.keys_url}>
           <IssueItem issue={issue} />
-          {shouldShowAdvertisement(idx) && (
-            <Advertisement key={`ad-${idx}-${issue.keys_url}`} />
-          )}
+          {shouldShowAdvertisement(idx) && <Advertisement key={idx} />}
         </Fragment>
       ))}
       {isLoading && <div>로딩중입니다...</div>}

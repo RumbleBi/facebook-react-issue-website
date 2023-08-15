@@ -23,7 +23,6 @@ export const getIssues = async (pageNum = 1) => {
 export const getRepoName = async () => {
   try {
     const res = await githubAPI.get(`/repos/facebook/react`);
-    console.log(res.data);
     return res.data;
   } catch (e) {
     console.log(e);

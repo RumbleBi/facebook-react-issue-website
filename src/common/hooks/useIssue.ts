@@ -12,6 +12,7 @@ export default function useIssue() {
   const issueList = useSelector(
     (state: RootState) => state.issueListReducer.issueList,
   );
+
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 

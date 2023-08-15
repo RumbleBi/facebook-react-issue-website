@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 
 const useInfiniteScroll = (callback: () => void) => {
   const [page, setPage] = useState(1);
+  const [initialLoad, setInitialLoad] = useState(true);
 
   useEffect(() => {
     const options = {
@@ -13,7 +14,11 @@ const useInfiniteScroll = (callback: () => void) => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          setPage((prevPageNumber) => prevPageNumber + 1);
+          if (!initialLoad) {
+            setPage((prevPageNumber) => prevPageNumber + 1);
+          } else {
+            setInitialLoad(false);
+          }
         }
       });
     }, options);
@@ -28,11 +33,13 @@ const useInfiniteScroll = (callback: () => void) => {
         observer.unobserve(target);
       }
     };
-  }, []);
+  }, [initialLoad]);
 
   useEffect(() => {
-    callback();
-  }, [page]);
+    if (page > 1 || initialLoad) {
+      callback();
+    }
+  }, [page, initialLoad]);
 
   return { page };
 };
