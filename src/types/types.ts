@@ -3,7 +3,7 @@ import { ReactNode } from 'react';
 export interface Issues {
   title: string;
   number: number;
-  id: number;
+  keys_url: string;
   created_at: string;
   comments: number;
   body: string;

@@ -1,8 +1,11 @@
 import { Fragment } from 'react';
+
 import useIssue from '../../common/hooks/useIssue';
 import IssueItem from '../../components/Issue';
-import { Wrap } from '../../pages/IssueList/styled';
 import Advertisement from '../../components/Advertisement';
+
+import { Wrap } from '../../pages/IssueList/styled';
+import { shouldShowAdvertisement } from '../../utils/shouldShowAdvertisement';
 
 export default function IssueListPage() {
   const { issueList, isLoading, error } = useIssue();
@@ -13,9 +16,11 @@ export default function IssueListPage() {
   return (
     <Wrap>
       {issueList.map((issue, idx) => (
-        <Fragment key={issue.id}>
+        <Fragment key={issue.keys_url}>
           <IssueItem issue={issue} />
-          {(idx + 1) % 4 === 0 && <Advertisement />}
+          {shouldShowAdvertisement(idx) && (
+            <Advertisement key={`ad-${idx}-${issue.keys_url}`} />
+          )}
         </Fragment>
       ))}
       {isLoading && <div>로딩중입니다...</div>}

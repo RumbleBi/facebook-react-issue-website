@@ -21,7 +21,9 @@ export default function Header() {
         console.log(err);
       }
     };
-    fetchRepoName();
+    if (!repoName) {
+      fetchRepoName();
+    }
   }, [dispatch]);
 
   return <Title>{repoName}</Title>;

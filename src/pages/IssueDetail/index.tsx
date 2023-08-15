@@ -12,6 +12,7 @@ export default function IssueDetailPage() {
       {state.issue && (
         <div>
           <h3>{state.issue.title}</h3>
+          <div>{state.issue.body}</div>
         </div>
       )}
     </Wrap>
