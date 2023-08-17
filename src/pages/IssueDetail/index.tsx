@@ -18,7 +18,6 @@ export default function IssueDetailPage() {
   const { state } = useLocation() as RouterDomState;
   const { issue } = state;
 
-  console.log(issue);
   return (
     <Wrap>
       <UserWrap>

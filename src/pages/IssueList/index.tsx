@@ -13,12 +13,13 @@ export default function IssueListPage() {
   if (error) {
     return <div>서버에 문제가 발생했습니다. 다시 시도해 주세요.</div>;
   }
+
   return (
     <Wrap>
       {issueList.map((issue, idx) => (
-        <Fragment key={issue.keys_url}>
+        <Fragment key={issue.id}>
           <IssueItem issue={issue} />
-          {shouldShowAdvertisement(idx) && <Advertisement key={idx} />}
+          {shouldShowAdvertisement(idx) && <Advertisement />}
         </Fragment>
       ))}
       {isLoading && <div>로딩중입니다...</div>}

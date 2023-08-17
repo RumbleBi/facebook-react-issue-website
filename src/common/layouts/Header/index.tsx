@@ -15,10 +15,9 @@ export default function Header() {
     const fetchRepoName = async () => {
       try {
         const res = await getRepoName();
-        console.log(res.full_name);
         dispatch(setRepoName(res.full_name));
-      } catch (err) {
-        console.log(err);
+      } catch (e) {
+        console.log(e);
       }
     };
     if (!repoName) {

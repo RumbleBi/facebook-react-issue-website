@@ -7,6 +7,7 @@ export interface Issues {
   created_at: string;
   comments: number;
   body: string;
+  id: number;
   user: {
     login: string;
     avatar_url: string;
