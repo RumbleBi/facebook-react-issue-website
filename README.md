@@ -1,6 +1,6 @@
 # 프리온보딩 인턴십 3주차 전역 변수 관리 과제
 
-## 배포 사이트:
+## 배포 사이트: https://facebook-react-issue-website-ep5vwptlz-rumblebi.vercel.app/issues
 
 ## 목차
 
@@ -78,7 +78,7 @@
 
 - [x] 헤더에는 Organization Name / Repository Name이 표시
 
-### 프로젝트 폴더 구조
+### 프로젝트 폴더구조
 
 ```
 .
